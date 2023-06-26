@@ -1,0 +1,22 @@
+using System;
+using System.Collections; //For Array List
+
+namespace Partical1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList a = new ArrayList();
+            a.Add(12); 
+            a.Add(43); 
+            a.Add("SAHYOG");
+            a.Insert(1, 50); 
+
+            foreach(object r in a)
+            {
+                Console.WriteLine(r);
+            }
+        }
+    }
+}
