@@ -1,0 +1,18 @@
+
+using System;
+using System.Collections; //For Array List
+
+namespace Partical1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String k = "Komal Negi";
+            //Console.WriteLine(k.Length);
+            //Console.WriteLine(k.ToLower());
+            Console.WriteLine(k.ToUpper());
+            
+        }
+    }
+}
