@@ -1,0 +1,19 @@
+using System;
+
+namespace Practical_4
+{
+    delegate void demo(int x, int y);
+    class Program
+    {
+        void Add(int x, int y)
+        {
+            Console.WriteLine(x + y + " Addition");
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            demo d = new demo(p.Add);
+            d(1, 3); //Add Calling
+        }
+    }
+}
