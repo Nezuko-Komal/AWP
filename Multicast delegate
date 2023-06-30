@@ -1,0 +1,31 @@
+using System;
+
+namespace Practical_4
+{
+    delegate void demo(int x, int y);
+    class Program
+    {
+        void Add(int x, int y)
+        {
+            Console.WriteLine(x + y + " Addition");
+        }
+        void sub(int p, int q)
+        {
+            Console.WriteLine(p - q + " Subtraction");
+        }
+        void mul(int a, int b)
+        {
+            Console.WriteLine(a * b + " Multiplication");
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            demo d1 = new demo(p.Add);
+            demo d2 = new demo(p.sub);
+            demo d3 = new demo(p.mul);
+
+            d3 = d1 + d2 + d3; //Multicast delegate
+            d3(12, 3);
+        }
+    }
+}
