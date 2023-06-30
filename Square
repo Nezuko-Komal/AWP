@@ -1,0 +1,19 @@
+using System;
+
+namespace Practical_4
+{
+    class Program
+    {
+        int square(int n)
+        {
+            return n * n;
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            //Console.WriteLine("Square =" +p.square(4));
+            int r = p.square(4);
+            Console.WriteLine(r);
+        }
+    }
+}
