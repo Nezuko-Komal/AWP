@@ -1,0 +1,28 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Student
+    {
+        static public int roll;
+        public string name;
+
+        static public void Display()
+        {
+            Console.WriteLine("Display function");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Student s1 = new Student();
+            Student s2 = new Student();
+            Student.Display();
+            Student.roll = 32;
+            s1.name = "NEHA";
+            s2.name = "PRIYA";
+            Console.WriteLine("Roll no= " + Student.roll + "Name= " + s1.name + " " + s2.name);
+        }
+    }
+}
