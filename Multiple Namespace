@@ -1,0 +1,39 @@
+using System;
+using first;
+using second;
+
+namespace first
+{
+    class demo
+    {
+        public void add()
+        {
+            Console.WriteLine("Add of first namespace");
+        }
+    }
+}
+    namespace second
+    {
+        class demo
+        {
+            public void sub()
+            {
+                Console.WriteLine("Add of second namespace");
+            }
+        }
+    }
+namespace final
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            first.demo d = new first.demo();
+            d.add();
+            second.demo d1 = new second.demo();
+            d1.sub();
+        }
+    }
+}
+  
+
