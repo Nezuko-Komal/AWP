@@ -1,0 +1,47 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication2.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body style="height: 399px">
+    <form id="form1" runat="server">
+        <div style="height: 516px">
+            Name: 
+            <asp:TextBox ID="TextBox1" runat="server" Height="26px" Width="170px"></asp:TextBox> 
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*Enter your name" ForeColor="#CC0000" ControlToValidate="TextBox1"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            Enter Password:
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*This Feild can't be empty" ForeColor="Red"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            Confirm Password:
+            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TextBox2" ControlToValidate="TextBox3" ErrorMessage="*Password must be same" ForeColor="Red"></asp:CompareValidator>
+            <br />
+            <br />
+            Enter Age:
+            <asp:TextBox ID="TextBox4" runat="server" OnTextChanged="TextBox4_TextChanged"></asp:TextBox>
+            <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="TextBox4" ErrorMessage="*Age between 10-20" ForeColor="Red" MaximumValue="20" MinimumValue="10"></asp:RangeValidator>
+            <br />
+            <br />
+            Email ID:
+            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox5" ErrorMessage="*Email ID incorrect format" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"></asp:RegularExpressionValidator>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button1" runat="server" Text="Submit" Height="25px" Width="74px" />
+            <br />
+            <%--<asp:MultiView ID="MultiView1" runat="server">
+                <asp:View ID="View1" runat="server"></asp:View>
+                <asp:View ID="View2" runat="server"></asp:View>--%>
+
+            <%--</asp:MultiView>--%>
+        </div>
+    </form>
+</body>
+</html>
