@@ -33,3 +33,17 @@
     </form>
 </body>
 </html>
+
+---------------------------------------------------------------CSS FILE-------------------------------------------------------------------------
+
+ protected void Button1_Click(object sender, EventArgs e)
+        {
+            if(MultiView1.ActiveViewIndex == 3)
+            {
+                MultiView1.ActiveViewIndex = 0;
+            }
+            else
+            {
+                MultiView1.ActiveViewIndex++;
+            }
+        }
