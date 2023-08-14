@@ -1,0 +1,37 @@
+-------------------------------------------------------------Login HTML----------------------------------------------------------------------
+<div>
+            Name:
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Gender:
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Course:
+            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
+        </div>
+
+-------------------------------------------------------------Login CSS ----------------------------------------------------------------------
+protected void Button1_Click(object sender, EventArgs e)
+        {
+            HttpCookie cook = new HttpCookie("Info");
+            cook["name"] = TextBox1.Text;
+            cook["gender"] = TextBox2.Text;
+            cook["course"] = TextBox3.Text;
+
+
+            Response.Cookies.Add(cook);
+            cook.Expires = DateTime.Now.AddMinutes(1);
+            Response.Redirect("Second.aspx");
+        } 
+
+-------------------------------------------------------------Second CSS ----------------------------------------------------------------------
+ protected void Page_Load(object sender, EventArgs e)
+        {
+            HttpCookie cook = Request.Cookies["Info"];
+            Label1.Text = "Welcome" + cook["name"].ToString();
+        }
