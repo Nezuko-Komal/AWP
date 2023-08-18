@@ -1,0 +1,127 @@
+----------------------------------------------------------Login.aspx-------------------------------------------------------------------------
+<form id="form1" runat="server">
+        <div>
+            Username:
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Password:
+            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" Text="Login" Height="40px" OnClick="Button1_Click" Width="128px" />
+        </div>
+    </form>
+----------------------------------------------------------Login.cs-------------------------------------------------------------------------
+protected void Button1_Click(object sender, EventArgs e)
+        {
+                Session["Username"] = TextBox1.Text;
+                Session["password"] = TextBox3.Text;
+
+                 Response.Redirect("Enroll.aspx");
+        }
+----------------------------------------------------------Enroll.aspx-------------------------------------------------------------------------
+<form id="form1" runat="server">
+        <div>
+            Name:
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Course
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" Text="Enroll" OnClick="Button1_Click" />
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <br />
+        </div>
+    </form>
+----------------------------------------------------------Enroll.cs------------------------------------------------------------------------
+        protected void Page_Load(object sender, EventArgs e)
+            {
+        {
+            if(Session["username"]!=null)
+               Label1.Text = "Welcome" + Session["Username"]; 
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["Name"] = TextBox1.Text;
+            Session["Course"] = TextBox2.Text;
+
+            Response.Redirect("Display.aspx");
+        }
+----------------------------------------------------------Display.aspx----------------------------------------------------------------------
+    <form id="form1" runat="server">
+        <div>
+            <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" Text="Back" OnClick="Button1_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button2" runat="server" Text="Logout" OnClick="Button2_Click" />
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        </div>
+    </form>
+
+----------------------------------------------------------Display.cs------------------------------------------------------------------------
+protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["username"] != null)
+            {
+                Label1.Text = "Welcome" + Session["Username"];
+                Label2.Text = "Course" + Session["Course"];
+
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Enroll.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Logout.aspx");
+        }
+----------------------------------------------------------Logout.aspx-----------------------------------------------------------------------
+    <form id="form1" runat="server">
+        <div>
+            <asp:Button ID="Button1" runat="server" Text="Logout" OnClick="Button1_Click" style="height: 26px" />
+        </div>
+    </form>
+----------------------------------------------------------Logout.cs-------------------------------------------------------------------------
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(Session["Username"] != null)
+            {
+                Session.Abandon();
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
+----------------------------------------------------------Web.config-------------------------------------------------------------------------
+<configuration>
+  <system.web>
+	  <sessionState timeout ="1"></sessionState>
