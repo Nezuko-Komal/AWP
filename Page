@@ -1,0 +1,48 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication8.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style>
+        nav{
+            align-content:space-between;
+            direction:flex;
+        }
+        a{
+            padding-right:50px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="height: 379px" class="nav">
+            <p>ARSHA</p>
+        <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+            <Items>
+                <asp:MenuItem Text="Home" Value="Home"></asp:MenuItem>
+                <asp:MenuItem Text="About us" Value="About us"></asp:MenuItem>
+                <asp:MenuItem Text="Servies" Value="Servies"></asp:MenuItem>
+                <asp:MenuItem Text="Portfolio" Value="Portfolio"></asp:MenuItem>
+                <asp:MenuItem Text="Team" Value="Team"></asp:MenuItem>
+                <asp:MenuItem Text="Drop Down" Value="Drop Down">
+                    <asp:MenuItem Text="Hiiiii" Value="Hiiiii"></asp:MenuItem>
+                    <asp:MenuItem Text="Heyyyy" Value="Heyyyy"></asp:MenuItem>
+                </asp:MenuItem>
+                <asp:MenuItem Text="Contact" Value="Contact"></asp:MenuItem>
+            </Items>
+        </asp:Menu>
+        </div>
+        <div class="">
+            <h1>Better Solution For Your Business</h1>
+            <p>We are team of talented designers making 
+               websites with Bootstrap</p>
+        </div>
+        <div>
+            Get Started
+            Watch video
+        </div>
+    </form>
+</body>
+</html>
