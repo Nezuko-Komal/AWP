@@ -1,0 +1,56 @@
+-------------------------------------------------------------------------------------------DATABASE------------------------------------------------------------------------------------------
+create table std
+(roll int, name varchar(20), course varchar(10), fees int)
+
+select * from std
+
+insert into std values(101,'KOMAL','BSC',76000)
+-------------------------------------------------------------------------------------------CODE----------------------------------------------------------------------------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication9.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Panel ID="Panel1" runat="server">
+                roll
+                <asp:TextBox ID="roll" runat="server" ></asp:TextBox>
+                <br />
+                <br />
+                name
+                <asp:TextBox ID="name" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                course
+                <asp:TextBox ID="course" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                fees
+                <asp:TextBox ID="fees" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" Height="44px" Width="114px" />
+            </asp:Panel>
+        </div>
+    </form>
+</body>
+</html>
+-------------------------------------------------------------------------------------------CS----------------------------------------------------------------------------------------------
+protected void Button1_Click(object sender, EventArgs e)
+        {
+            string cs = "data source=PC-22\\SQLEXPRESS;initial catalog=clg1;uid=sa;pwd=Admin123";
+            SqlConnection con = new SqlConnection(cs);
+
+            con.Open();
+            string q = "insert into std values('" + roll.Text+"','" + name.Text+"','" + course.Text+"','" + fees.Text+"')";
+
+            SqlCommand cmd = new SqlCommand(q, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            Response.Write("Data Stored");
+        }
