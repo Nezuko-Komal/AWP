@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------------LOGIN.ASPX------------------------------------------------------------------------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebApplication19.Login" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Panel ID="Panel1" runat="server" BackColor="#9999FF" Height="208px" style="margin-left: 214px" Width="428px">
+                <asp:Label ID="Label1" runat="server" Text="USERNAME -"></asp:Label>
+                &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                <asp:Label ID="Label2" runat="server" Text="PASSWORD -"></asp:Label>
+                &nbsp;<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <br />
+                <br />
+                <asp:Button ID="Button1" runat="server" BackColor="#6699FF" Height="33px" OnClick="Button1_Click" Text="Login" Width="101px" />
+            </asp:Panel>
+        </div>
+    </form>
+</body>
+</html>
+-------------------------------------------------------------------------------LOGIN.CS------------------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Security;
+
+namespace WebApplication19
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if(FormsAuthentication.Authenticate(TextBox1.Text,TextBox2.Text))
+            {
+                FormsAuthentication.RedirectFromLoginPage(TextBox1.Text, true);
+            }
+            else
+            {
+                Response.Write("Invalid Username or Password");
+            }
+        }
+    }
+}
+-------------------------------------------------------------------------------HOME.ASPX------------------------------------------------------------------------------------------
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="WebApplication19.Home" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1 style="text-align : center">HOME PAGE</h1>
+        </div>
+    </form>
+</body>
+</html>
